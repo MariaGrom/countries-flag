@@ -1,15 +1,29 @@
-import { Controls } from "./components/Controls";
+import axios from "axios";
+import { useState, useEffect } from "react";
+
 import { Header } from "./components/Header";
 import { Main } from "./components/Main";
 
+import { Switch, Route } from "react-router-dom";
+
+import{HomePage} from './pages/HomePage';
+import{NotFound} from './pages/NotFound';
+import{Details} from './pages/Details';
 
 
 function App() {
+  const [countries, setCountries] = useState([]);
   return (
     <>
       <Header />
       <Main>
-        <Controls />
+       <Switch>
+        <Route exact path="/">
+          <HomePage countries={countries} setCountries={setCountries}/>
+        </Route>
+        <Route  path="/country/:name" component={Details}/>
+        <Route component={NotFound}/>
+       </Switch>
       </Main>
 
     </>

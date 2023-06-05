@@ -24,11 +24,16 @@ align-items: flex-start;
 }
 `
 
-export const Controls = () => {
+export const Controls = ({onSearch}) => {
   // переменная состояния для поиска
   const [search, setSearch] = useState("");
   // переменная состояния для выбора региона в селеткторе
   const [region, setRegion] = useState("");
+
+  useEffect(()=>{
+    console.log('region', region)
+    onSearch(search)
+  },[search, region])
   return (
     <Wrapper>
       <Search search={search} setSearch={setSearch} />
