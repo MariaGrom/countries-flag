@@ -36,6 +36,14 @@ export const HomePage = ({ countries, setCountries }) => {
       axios.get(ALL_COUNTRIES).then(({ data }) => setCountries(data));
   }, []);
 
+//  еще один useEffect, который будет принудительно вызвать фильтрацию,
+// когда изменится набор стран - вызовем handleSearch() и получим все страны в 
+// отфильтрованный массив
+
+useEffect(()=>{
+  handleSearch()
+},[countries])
+
   return (
     <>
       <Controls onSearch={handleSearch}/>

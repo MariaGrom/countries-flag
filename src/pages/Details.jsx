@@ -11,7 +11,6 @@ export const Details = () => {
   const { push, goBack } = useHistory();
   const [country, setCountry] = useState(null);
 
-  console.log("country", country);
   // через useEffect будет делать вызов за получением соседней страны
   useEffect(() => {
     axios.get(searchByCountry(name)).then(({ data }) => setCountry(data[0]));

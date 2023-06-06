@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { filterByCode } from "../config";
 
 const Wrapper = styled.section`
 margin-top: 3rem;
@@ -104,7 +105,16 @@ export const Info = (props) => {
     push,
   } = props;
 
-  
+  // Переменная состояния для соседних стран
+  const [neighbours, setNeighbours] = useState([]);
+
+  useEffect(() => {
+// делаем проверку - если сосдних стран нет, то запрос выполнять не нужно
+if(borders.length)
+    axios.get(filterByCode(borders)).then(
+      ({data}) => setNeighbours(data.map(c=>c.name))
+    )
+  }, [borders]);
 
   return (
     <Wrapper>
@@ -159,7 +169,7 @@ export const Info = (props) => {
           <span>There is no border countries</span>
         ): (
         <TagGroup>
-          {borders.map((b)=>(<Tag key={b}>{b}</Tag>))}
+          {neighbours.map((n)=>(<Tag key={n} onClick={()=> push(`/country/${n}`)}>{n}</Tag>))}
         </TagGroup>
         )}
         </Meta>
