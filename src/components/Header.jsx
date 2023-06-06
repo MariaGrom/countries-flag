@@ -9,7 +9,7 @@ import { Container } from "./Container";
 // стилизация всего header
 const HeaderEl = styled.header`
   box-shadow: var(--shadow);
-  backgraund-color: var(--color-ui-base);
+  background-color: var(--color-ui-base);
 `;
 // стилиация расположения элементов внутри header
 const Wrapper = styled.div`

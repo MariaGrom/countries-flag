@@ -31,8 +31,8 @@ export const Controls = ({onSearch}) => {
   const [region, setRegion] = useState("");
 
   useEffect(()=>{
-    console.log('region', region)
-    onSearch(search)
+    const regionValue = region?.value || '';
+    onSearch(search, regionValue)
   },[search, region])
   return (
     <Wrapper>
