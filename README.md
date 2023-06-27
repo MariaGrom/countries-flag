@@ -1,5 +1,5 @@
 ## SPA приложение с флагами стран
-https://mariagrom.github.io/countries-flag/
+https://mariagrom.github.io
 
 ### Основной функционал
 - поиск флагов по странам;
